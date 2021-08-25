@@ -93,7 +93,7 @@ int main(void)
   MX_TIM1_Init();
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
-HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_1);
+	HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_1);
     
   /* USER CODE END 2 */
 
@@ -101,7 +101,8 @@ HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_1);
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	for(unsigned short i=0;i<=100;i++)
+		/* PWM */
+		for(unsigned short i=0;i<=100;i++)
 		{
 			__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,i);
 			HAL_Delay(50);
@@ -109,10 +110,10 @@ HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_1);
 		
     /* USER CODE END WHILE */
 
-    /* USER CODE BEGIN 3 */
+    /* Read ADC */
 		
-		//HAL_ADC_Start_IT(&hadc1);
-		//HAL_Delay(50);*/
+		HAL_ADC_Start_IT(&hadc1);
+		HAL_Delay(50);
   }
   /* USER CODE END 3 */
 }
